@@ -1,16 +1,13 @@
 #define SFML_STATIC
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 
 class primitives{
 private:
-	//sf::Vertex vertex;
 	sf::VertexArray triangle;
 public:
 	void shape(int width, int height){
-		/*vertex.position = sf::Vector2f(10,50);
-		vertex.color = sf::Color::Red;
-		vertex.texCoords = sf::Vector2f(100,100);*/
 		triangle.setPrimitiveType(sf::Triangles);
 		triangle.resize(3);
 		triangle[0].position = sf::Vector2f(10, 10);
@@ -20,36 +17,40 @@ public:
 		triangle[1].color = sf::Color::Blue;
 		triangle[2].color = sf::Color::Green;
 	}
+	void drawline(int x, int y, int x1, int y1, sf::RenderWindow *window, int px){
+		float difx = x1-x;
+		float dify = y1-y;
+		float diff = dify/difx;
+		int cx = x;
+		int cy = y;
+		std::vector<sf::Vertex> vertices;
+		if(x1!=x && y1!=y){
+			for(cx = x; cx<=x1; cx+=diff, cy+=diff){
+				for(int i = cx-(px/2); i <= cx+(px-(px/2)); i++){
+					for(int j = cy-(px/2); j <= cy+(px-(px/2)); j++){
+						vertices.push_back(sf::Vertex(sf::Vector2f(x+i,y+j),sf::Color::Black));
+					}
+				}
+			}
+			window->draw(&vertices[0],vertices.size(),sf::Triangles);
+		}
+		/*sf::Vertex line[]{
+			sf::Vertex(sf::Vector2f(10,10),sf::Color::Black),
+			sf::Vertex(sf::Vector2f(10,11),sf::Color::Black),
+			sf::Vertex(sf::Vector2f(11,10),sf::Color::Black),
+			sf::Vertex(sf::Vector2f(11,11),sf::Color::Black),
+			sf::Vertex(sf::Vector2f(12,11),sf::Color::Black),
+			sf::Vertex(sf::Vector2f(11,12),sf::Color::Black),
+			sf::Vertex(sf::Vector2f(10,12),sf::Color::Black),
+			sf::Vertex(sf::Vector2f(12,10),sf::Color::Black),
+		};
+		window->draw(line,2,sf::LinesStrip);*/
+	}
 	void drawshapes(sf::RenderWindow *window){
 		window->draw(triangle);
 	}
 };
-/*
-class primitives{
-private:
-sf::RectangleShape rectangle;
-sf::CircleShape triangle;
-sf::ConvexShape convex;
-public:
-	void shape(){
-		convex.setPointCount(3);
-		triangle.setPointCount(3);
-		rectangle.setSize(sf::Vector2f(100.0f,100.0f));
-		
-	}
-	void drawshapes(sf::RenderWindow *window){
-		sf::Vector2u size = window->getSize();
-		int width = size.x;
-		int height = size.y;
-		convex.setPoint(0, sf::Vector2f(width*0.1f, height*0.3f));
-		convex.setPoint(1, sf::Vector2f(width*0.1f, height*0.6f));
-		convex.setPoint(2, sf::Vector2f(width*0.3f, height*0.45f));
-		convex.setFillColor(sf::Color::Green);
-		window->draw(convex);
-	}
 
-};
-*/
 class engine{
 private:
 	sf::RenderWindow window;
@@ -71,7 +72,7 @@ public:
 			while (window.pollEvent(evnt))
 			{
 				// Close window: exit
-				if(evnt.type == evnt.Closed)
+				if(evnt.type == evnt.Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 					window.close();
 				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)){
 					prims.shape(currsize.x,currsize.y);
@@ -89,7 +90,8 @@ public:
 			window.setActive(true);
 
 			window.clear(sf::Color::Blue);
-			prims.drawshapes(&window);
+			//prims.drawshapes(&window);
+			prims.drawline(10,10,30,300,&window,10);
 
 			window.display();
 			}
