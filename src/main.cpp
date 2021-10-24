@@ -25,26 +25,21 @@ public:
 		int cy = y;
 		std::vector<sf::Vertex> vertices;
 		if(x1!=x && y1!=y){
-			for(cx = x; cx<=x1; cx+=diff, cy+=diff){
+			/*for(cx = x; cx<=x1; cx+=diff, cy+=diff){
 				for(int i = cx-(px/2); i <= cx+(px-(px/2)); i++){
 					for(int j = cy-(px/2); j <= cy+(px-(px/2)); j++){
 						vertices.push_back(sf::Vertex(sf::Vector2f(x+i,y+j),sf::Color::Black));
-					}
+					}\
+				}
+			}*/
+			for(int i = 30; i<50; i++){
+				for(int j = 30; j<50; j++){
+					vertices.push_back(sf::Vertex(sf::Vector2f(i,j),sf::Color::Red));
 				}
 			}
-			window->draw(&vertices[0],vertices.size(),sf::Triangles);
+			window->draw(&vertices[0],vertices.size(),sf::Points);
+			vertices.clear();
 		}
-		/*sf::Vertex line[]{
-			sf::Vertex(sf::Vector2f(10,10),sf::Color::Black),
-			sf::Vertex(sf::Vector2f(10,11),sf::Color::Black),
-			sf::Vertex(sf::Vector2f(11,10),sf::Color::Black),
-			sf::Vertex(sf::Vector2f(11,11),sf::Color::Black),
-			sf::Vertex(sf::Vector2f(12,11),sf::Color::Black),
-			sf::Vertex(sf::Vector2f(11,12),sf::Color::Black),
-			sf::Vertex(sf::Vector2f(10,12),sf::Color::Black),
-			sf::Vertex(sf::Vector2f(12,10),sf::Color::Black),
-		};
-		window->draw(line,2,sf::LinesStrip);*/
 	}
 	void drawshapes(sf::RenderWindow *window){
 		window->draw(triangle);
@@ -78,7 +73,6 @@ public:
 					prims.shape(currsize.x,currsize.y);
 					currsize = window.getSize();
 					if(currsize == sf::Vector2u(width,height)){
-
 						window.create(sf::VideoMode(1920,1080),"Tower Defense", sf::Style::Fullscreen, settings);
 					}
 					else{
@@ -89,7 +83,7 @@ public:
 
 			window.setActive(true);
 
-			window.clear(sf::Color::Blue);
+			window.clear(sf::Color::Black);
 			//prims.drawshapes(&window);
 			prims.drawline(10,10,30,300,&window,10);
 
