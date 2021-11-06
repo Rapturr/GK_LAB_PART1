@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-class primitives{
+class PrimitiveRenderer{
 private:
 	sf::VertexArray triangle;
 public:
@@ -24,23 +24,32 @@ public:
 		int cx = x;
 		int cy = y;
 		std::vector<sf::Vertex> vertices;
-		if(x1!=x && y1!=y){
-			/*for(cx = x; cx<=x1; cx+=diff, cy+=diff){
+		/*if(x1!=x && y1!=y){
+			for(cx = x; cx<=x1; cx+=diff, cy+=diff){
 				for(int i = cx-(px/2); i <= cx+(px-(px/2)); i++){
 					for(int j = cy-(px/2); j <= cy+(px-(px/2)); j++){
 						vertices.push_back(sf::Vertex(sf::Vector2f(x+i,y+j),sf::Color::Black));
-					}\
+					}
 				}
 			}*/
-			for(int i = 30; i<50; i++){
-				for(int j = 30; j<50; j++){
-					vertices.push_back(sf::Vertex(sf::Vector2f(i,j),sf::Color::Red));
-				}
-			}
+			vertices.push_back(sf::Vertex(sf::Vector2f(50,50),sf::Color::Black));
+			vertices.push_back(sf::Vertex(sf::Vector2f(50,51),sf::Color::Black));
+			vertices.push_back(sf::Vertex(sf::Vector2f(51,50),sf::Color::Black));
+			vertices.push_back(sf::Vertex(sf::Vector2f(51,51),sf::Color::Black));
 			window->draw(&vertices[0],vertices.size(),sf::Points);
 			vertices.clear();
-		}
+		//}
 	}
+	
+
+	void makeRectangle(sf::RenderWindow *window, int posx, int posy, int sizex, int sizey){
+		sf::RectangleShape rectangle;
+		rectangle.setPosition(sf::Vector2f(posx,posy));
+		rectangle.setSize(sf::Vector2f(sizex,sizey));
+		rectangle.setFillColor(sf::Color::Red);
+		window->draw(rectangle);
+	}
+
 	void drawshapes(sf::RenderWindow *window){
 		window->draw(triangle);
 	}
@@ -51,7 +60,7 @@ private:
 	sf::RenderWindow window;
 	sf::Vector2u currsize;
 	sf::ContextSettings settings;
-	primitives prims;
+	PrimitiveRenderer prims;
 public:
 	void gamescreen(int width, int height){
 		settings.antialiasingLevel = 8;
@@ -59,7 +68,7 @@ public:
 		window.setKeyRepeatEnabled(false);
 		window.setFramerateLimit(60);
 		currsize = window.getSize();
-		prims.shape(currsize.x,currsize.y);
+		//prims.shape(currsize.x,currsize.y);
 
 		while(window.isOpen()){
 
@@ -69,7 +78,7 @@ public:
 				// Close window: exit
 				if(evnt.type == evnt.Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 					window.close();
-				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)){
+				if(sf::Keyboard::isKeyPressed(sf::Keyboard::F)){
 					prims.shape(currsize.x,currsize.y);
 					currsize = window.getSize();
 					if(currsize == sf::Vector2u(width,height)){
@@ -81,9 +90,9 @@ public:
 					}
 				}
 
-			window.setActive(true);
+			//window.setActive(true);
 
-			window.clear(sf::Color::Black);
+			window.clear(sf::Color::White);
 			//prims.drawshapes(&window);
 			prims.drawline(10,10,30,300,&window,10);
 
