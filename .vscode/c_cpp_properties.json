@@ -13,7 +13,7 @@
             "windowsSdkVersion": "10.0.18362.0",
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "compilerPath": "E:/programy/PROGRAMOWANIE/codeblocks/app/CodeBlocks/MinGW/bin/cpp.exe"
+            "compilerPath": "C:/mingw/bin/gcc.exe"
         }
     ],
     "version": 4
