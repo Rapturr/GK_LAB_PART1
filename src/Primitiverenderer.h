@@ -6,6 +6,7 @@
 class PrimitiveRenderer{
 private:
 	sf::VertexArray triangle;
+	sf::VertexArray vertices;
 public:
 	void shape(int width, int height){
 		triangle.setPrimitiveType(sf::Triangles);
@@ -17,22 +18,47 @@ public:
 		triangle[1].color = sf::Color::Blue;
 		triangle[2].color = sf::Color::Green;
 	}
-	void drawline(int x, int y, int x1, int y1, sf::RenderWindow *window){
-		
+	/*void drawline(int x, int y, int x1, int y1, sf::RenderWindow *window){
 		float difx = x1-x;
 		float dify = y1-y;
 		float diff = dify/difx;
 		int cx = x;
 		int cy = y;
-		if(x1!=x && y1!=y){
+		if(x1>x && y1>y){
 			if(cx < x1)
 			for(cx = x; cx<=x1; cx+=diff, cy+=diff){
 				sf::Vertex vertices(sf::Vector2f(cx,cy), sf::Color::Black);
-				window->draw(&vertices,2,sf::Points);
-				
+				window->draw(&vertices,1,sf::Points);
+			}
+		}
+	}*/
+	void makeline(int x, int y, int x1, int y1){
+		if(x<x1 && y<y1){
+			float difx = x1-x;
+			float dify = y1-y;
+			float diffy = dify/difx;
+			float diffx = difx/dify;
+			float cx = x;
+			float cy = y;
+			int j = 0;
+			int i = 0;
+			std::vector<sf::Vertex> vericec;
+			for(cx = x; cx<=x1; cx+=diffx, cy+=diffy){
+				j++;
+			}
+			vertices.resize(j);
+			for(cx = x; cx<=x1; cx+=diffx, cy+=diffy){
+				vertices[i].position = sf::Vector2f(cx,cy);
+				vertices[i].color = sf::Color::Black;
+				//i++;
+				//sf::Vertex vert(sf::Vector2f(cx,cy), sf::Color::Black);
 			}
 		}
 	}
+	void drawline(sf::RenderWindow *window){
+		window->draw(vertices);
+	}
+	
 	void drawRectangle(sf::RenderWindow *window, int posx, int posy, int sizex, int sizey){
 		sf::RectangleShape rectangle(sf::Vector2f(sizex,sizey));
 		rectangle.setPosition(sf::Vector2f(posx,posy));

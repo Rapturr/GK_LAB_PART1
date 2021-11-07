@@ -1,7 +1,4 @@
-#define SFML_STATIC
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include "PrimitiveRenderer.h"
+#include "Primitiverenderer.h"
 
 class Point2D{
 private:
@@ -12,20 +9,26 @@ private:
 	bool ch = false;
 	PrimitiveRenderer prims;
 public:
-	int readC(){
-		sf::Vector2i pos = sf::Mouse::getPosition();
-		if(!pointx){
+	Point2D(){
+	pointx = -1;
+	pointy = -1;
+	pointx1 = -1;
+	pointy1 = -1;
+	}
+	void readC(sf::RenderWindow *window){
+		sf::Vector2i pos = sf::Mouse::getPosition(*window);
+
+		if(pointx < 0){
 			pointx = pos.x;
 			pointy = pos.y;
-		}else if(!pointx1){
+		}else if(pointx1 < 0){
 			pointx1 = pos.x;
 			pointy1 = pos.y;
 		}else
-			return -1;
-		return 0;
+			modC(window);
 	}
-	void modC(){
-		sf::Vector2i pos = sf::Mouse::getPosition();
+	void modC(sf::RenderWindow *window){
+		sf::Vector2i pos = sf::Mouse::getPosition(*window);
 		std::cout<<"changed";
 		if(ch){
 			pointx = pos.x;
@@ -37,11 +40,16 @@ public:
 			pointy1 = pos.y;
 			ch = true;
 		}
+		prims.makeline(pointx,pointy,pointx1,pointy1);
 	}
 	void drawLn(sf::RenderWindow *window){
-		if(pointx>0 && pointx < 2000 && pointx1>0 && pointx1 < 2000)
-				std::cout<<"przekazywane hello\n y = "<<pointy<<"  y1 = "<<pointy1;
+		if(pointx>0 && pointx < 2000 && pointx1>0 && pointx1 < 2000){
+			//std::cout<<"przekazywane hello\n y = "<<pointy<<"  y1 = "<<pointy1;
 			//jak odkomentujesz to wybuchnie
-			//prims.drawline(pointx,pointy,pointx1,pointy1,window);
+			prims.drawline(window);
+		}
+	}
+	void drawLn(int x,int y, int x1, int y1, sf::RenderWindow *window){
+		prims.drawline(window);
 	}
 };

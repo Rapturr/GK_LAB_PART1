@@ -1,12 +1,9 @@
-#define SFML_STATIC
-#include <SFML/Graphics.hpp>
-#include <iostream>
 #include "Engine.h"
 
 int main(){
-	engine silnik;
+	Engine silnik(1280,720);
 
-	silnik.gamescreen(1280,720);
+	silnik.gamescreen();
 	
 	return EXIT_SUCCESS;
 }
