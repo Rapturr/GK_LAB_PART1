@@ -37,7 +37,7 @@ public:
 				points.readC(&window);
 				}
 			}
-			window.clear(sf::Color::Blue);
+			window.clear(sf::Color::White);
 
 			points.drawLn(&window);
 

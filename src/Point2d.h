@@ -45,7 +45,6 @@ public:
 	void drawLn(sf::RenderWindow *window){
 		if(pointx>0 && pointx < 2000 && pointx1>0 && pointx1 < 2000){
 			//std::cout<<"przekazywane hello\n y = "<<pointy<<"  y1 = "<<pointy1;
-			//jak odkomentujesz to wybuchnie
 			prims.drawline(window);
 		}
 	}

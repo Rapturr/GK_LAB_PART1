@@ -34,28 +34,159 @@ public:
 	}*/
 	void makeline(int x, int y, int x1, int y1){
 		if(x<x1 && y<y1){
-			float difx = x1-x;
-			float dify = y1-y;
-			float diffy = dify/difx;
-			float diffx = difx/dify;
-			float cx = x;
-			float cy = y;
-			int j = 0;
-			int i = 0;
-			std::vector<sf::Vertex> vericec;
-			for(cx = x; cx<=x1; cx+=diffx, cy+=diffy){
-				j++;
+			std::cout<<std::endl<<(x1-x)/(y1-y)<<std::endl;
+			if( (y1-y)/(x1-x) < 1 ){
+
+				std::cout<<"jestem mniejszy od 45 stopni."<<std::endl;
+				float difx = x1-x;
+				float dify = y1-y;
+				float diffy = dify/difx;
+				float diffx = difx/dify;
+				float cx = x;
+				float cy = y;
+				int j = 0;
+				int i = 0;
+				std::vector<sf::Vertex> vericec;
+				for(cx = x; cx<=x1; cx++, cy+=diffy){
+					j++;
+				}
+				vertices.resize(j);
+
+				for(cx = x, cy = y; cx<=x1; cx++, cy+=diffy, i++){
+					vertices[i].position = sf::Vector2f(cx,cy);
+					vertices[i].color = sf::Color::Black;
+					//i++;
+					//sf::Vertex vert(sf::Vector2f(cx,cy), sf::Color::Black);
+				}
 			}
-			vertices.resize(j);
-			for(cx = x; cx<=x1; cx+=diffx, cy+=diffy){
-				vertices[i].position = sf::Vector2f(cx,cy);
-				vertices[i].color = sf::Color::Black;
-				//i++;
-				//sf::Vertex vert(sf::Vector2f(cx,cy), sf::Color::Black);
+			else
+			{
+				std::cout<<"jestem wiekszy od 45 stopni."<<std::endl;
+				float difx = x1-x;
+				float dify = y1-y;
+				float diffy = dify/difx;
+				float diffx = difx/dify;
+				float cx = x;
+				float cy = y;
+				int j = 0;
+				int i = 0;
+				std::vector<sf::Vertex> vericec;
+				for(cx = x; cx<=x1; cx+=diffx, cy++){
+					j++;
+				}
+				vertices.resize(j);
+
+				for(cx = x, cy = y; cx<=x1; cx+=diffx, cy++, i++){
+					vertices[i].position = sf::Vector2f(cx,cy);
+					vertices[i].color = sf::Color::Black;
+					//i++;
+					//sf::Vertex vert(sf::Vector2f(cx,cy), sf::Color::Black);
+				}
+			}
+		}
+		else if(y>=y1 && x < x1){
+			if( (y-y1)/(x1-x) < 1 ){
+
+				std::cout<<"jestem mniejszy od 45 stopni."<<std::endl;
+				float difx = x1-x;
+				float dify = y-y1;
+				float diffy = dify/difx;
+				float diffx = difx/dify;
+				float cx = x;
+				float cy = y;
+				int j = 0;
+				int i = 0;
+				std::vector<sf::Vertex> vericec;
+				for(cx = x; cx<=x1; cx++, cy-=diffy){
+					j++;
+				}
+				vertices.resize(j);
+
+				for(cx = x, cy = y; cx<=x1; cx++, cy-=diffy, i++){
+					vertices[i].position = sf::Vector2f(cx,cy);
+					vertices[i].color = sf::Color::Black;
+					//i++;
+					//sf::Vertex vert(sf::Vector2f(cx,cy), sf::Color::Black);
+				}
+			}
+			else
+			{
+				std::cout<<"jestem wiekszy od 45 stopni."<<std::endl;
+				float difx = x1-x;
+				float dify = y-y1;
+				float diffy = dify/difx;
+				float diffx = difx/dify;
+				float cx = x;
+				float cy = y;
+				int j = 0;
+				int i = 0;
+				std::vector<sf::Vertex> vericec;
+				for(cx = x; cx>=x1; cx+=diffx, cy--){
+					j++;
+				}
+				vertices.resize(j);
+
+				for(cx = x, cy = y; cx>=x1; cx+=diffx, cy--, i++){
+					vertices[i].position = sf::Vector2f(cx,cy);
+					vertices[i].color = sf::Color::Black;
+					//i++;
+					//sf::Vertex vert(sf::Vector2f(cx,cy), sf::Color::Black);
+				}
+			}
+		}
+		else if(y<y1 && x >= x1){
+			if( (y1-y)/(x-x1) < 1 ){
+
+				std::cout<<"jestem mniejszy od 45 stopni."<<std::endl;
+				float difx = x-x1;
+				float dify = y1-y;
+				float diffy = dify/difx;
+				float diffx = difx/dify;
+				float cx = x;
+				float cy = y;
+				int j = 0;
+				int i = 0;
+				std::vector<sf::Vertex> vericec;
+				for(cx = x; cx>=x1; cx--, cy+=diffy){
+					j++;
+				}
+				vertices.resize(j);
+
+				for(cx = x, cy = y; cx<=x1; cx++, cy-=diffy, i++){
+					vertices[i].position = sf::Vector2f(cx,cy);
+					vertices[i].color = sf::Color::Black;
+					//i++;
+					//sf::Vertex vert(sf::Vector2f(cx,cy), sf::Color::Black);
+				}
+			}
+			else
+			{
+				std::cout<<"jestem wiekszy od 45 stopni."<<std::endl;
+				float difx = x1-x;
+				float dify = y-y1;
+				float diffy = dify/difx;
+				float diffx = difx/dify;
+				float cx = x;
+				float cy = y;
+				int j = 0;
+				int i = 0;
+				std::vector<sf::Vertex> vericec;
+				for(cx = x; cx>=x1; cx+=diffx, cy--){
+					j++;
+				}
+				vertices.resize(j);
+
+				for(cx = x, cy = y; cx>=x1; cx+=diffx, cy--, i++){
+					vertices[i].position = sf::Vector2f(cx,cy);
+					vertices[i].color = sf::Color::Black;
+					//i++;
+					//sf::Vertex vert(sf::Vector2f(cx,cy), sf::Color::Black);
+				}
 			}
 		}
 	}
 	void drawline(sf::RenderWindow *window){
+
 		window->draw(vertices);
 	}
 	
