@@ -7,6 +7,7 @@ sf::Vector2u currsize;
 sf::Vector2u originalsize;
 LineSegment line;
 sf::Event evnt;
+PrimitiveRenderer kolo;
 public:
 	Engine(int width, int height){
 		window.create(sf::VideoMode(width,height),"Tower Defense", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);
@@ -31,6 +32,8 @@ public:
 						window.setPosition(sf::Vector2i(0,0));
 					}
 				}
+			
+		/*
 			if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
 				std::cout<<"Kliklo\n";
 				line.readpoint(&window);
@@ -40,9 +43,12 @@ public:
 				std::cout<<"Kliklo Reft\n";
 				line.reset();
 			}
-			window.clear(sf::Color::White);
-
 			line.drawLine(&window);
+		*/
+			
+			window.clear(sf::Color::White);
+			kolo.makeElipsse(sf::Vector2f(100,500),50,60);
+			kolo.drawElipsse(&window,0,0,0);
 
 			window.display();
 		}

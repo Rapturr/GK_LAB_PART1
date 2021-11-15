@@ -1,6 +1,7 @@
 #define SFML_STATIC
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <math.h>
 
 
 class PrimitiveRenderer{ 
@@ -9,6 +10,8 @@ private:
 	sf::VertexArray vertices;
 	sf::Vertex point;
 	std::vector<sf::Vertex> linesvector;
+	std::vector<sf::Vertex> circlevector;
+	std::vector<sf::Vertex> elipssevector;
 	sf::VertexArray lines;
 public:
 	void shape(int width, int height){
@@ -112,8 +115,8 @@ public:
 		
 	}
 	void drawline(sf::RenderWindow *window){
-		std::cout<<"rysuje sie\n";
-		window->draw(vertices);
+		//std::cout<<"rysuje sie\n";
+		//window->draw(vertices);
 		window->draw(&linesvector[0],linesvector.size(),sf::LineStrip);
 	}
 	
@@ -124,14 +127,43 @@ public:
 		window->draw(rectangle);
 	}
 
+	void makeCircle(sf::Vector2f center, float radius){
+		circlevector.resize(500);
+		for(float i = 0 ;i<3.14/2;i += 0.01){
+			circlevector.push_back(sf::Vertex(sf::Vector2f((int)(center.x + (radius * std::cos(i))), ((int)center.y + (radius * std::sin(i)))),sf::Color::Black));
+			circlevector.push_back(sf::Vertex(sf::Vector2f((int)(center.x - (radius * std::cos(i))), ((int)center.y + (radius * std::sin(i)))),sf::Color::Black));
+			circlevector.push_back(sf::Vertex(sf::Vector2f((int)(center.x + (radius * std::cos(i))), ((int)center.y - (radius * std::sin(i)))),sf::Color::Black));
+			circlevector.push_back(sf::Vertex(sf::Vector2f((int)(center.x - (radius * std::cos(i))), ((int)center.y - (radius * std::sin(i)))),sf::Color::Black));
+		}
+
+
+	}
 	void drawCircle(sf::RenderWindow *window, int posx, int posy, int size){
-		sf::CircleShape circle(size);
-		circle.setPosition(sf::Vector2f(posx,posy));
-		circle.setFillColor(sf::Color::Red);
-		window->draw(circle);
+
+		window->draw(&circlevector[0],circlevector.size(),sf::Points);
+
+	}
+	void makeElipsse(sf::Vector2f center, float radiusx, float radiusy){
+		circlevector.resize(500);
+		for(float i = 0 ;i<3.14/2;i += 0.01){
+			elipssevector.push_back(sf::Vertex(sf::Vector2f((int)(center.x + (radiusx * std::cos(i))), ((int)center.y + (radiusy * std::sin(i)))),sf::Color::Black));
+			elipssevector.push_back(sf::Vertex(sf::Vector2f((int)(center.x - (radiusx * std::cos(i))), ((int)center.y + (radiusy * std::sin(i)))),sf::Color::Black));
+			elipssevector.push_back(sf::Vertex(sf::Vector2f((int)(center.x + (radiusx * std::cos(i))), ((int)center.y - (radiusy * std::sin(i)))),sf::Color::Black));
+			elipssevector.push_back(sf::Vertex(sf::Vector2f((int)(center.x - (radiusx * std::cos(i))), ((int)center.y - (radiusy * std::sin(i)))),sf::Color::Black));
+		}
+
+
+	}
+	void drawElipsse(sf::RenderWindow *window, int posx, int posy, int size){
+
+		window->draw(&elipssevector[0],elipssevector.size(),sf::Points);
+
 	}
 
 	void drawTriangle(sf::RenderWindow *window, int posx, int posy, int size){
+		
+
+
 		sf::CircleShape circle(size,3);
 		circle.setPosition(sf::Vector2f(posx,posy));
 		circle.setFillColor(sf::Color::Red);
