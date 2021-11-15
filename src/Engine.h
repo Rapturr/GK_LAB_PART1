@@ -48,7 +48,7 @@ public:
 			
 			window.clear(sf::Color::White);
 			kolo.makeElipsse(sf::Vector2f(100,500),50,60);
-			kolo.drawElipsse(&window,0,0,0);
+			kolo.drawElipsse(&window);
 
 			window.display();
 		}

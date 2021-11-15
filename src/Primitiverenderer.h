@@ -138,7 +138,7 @@ public:
 
 
 	}
-	void drawCircle(sf::RenderWindow *window, int posx, int posy, int size){
+	void drawCircle(sf::RenderWindow *window){
 
 		window->draw(&circlevector[0],circlevector.size(),sf::Points);
 
@@ -154,7 +154,7 @@ public:
 
 
 	}
-	void drawElipsse(sf::RenderWindow *window, int posx, int posy, int size){
+	void drawElipsse(sf::RenderWindow *window){
 
 		window->draw(&elipssevector[0],elipssevector.size(),sf::Points);
 
