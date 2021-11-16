@@ -10,7 +10,11 @@ private:
 	std::vector<sf::Vertex> circlevector;
 	std::vector<sf::Vertex> elipssevector;
 	sf::VertexArray lines;
+	BitmapHandler bitmap;
 public:
+	PrimitiveRenderer(){
+		bitmap.createbm();
+	}
 	void shape(int width, int height){
 		triangle.setPrimitiveType(sf::Triangles);
 		triangle.resize(3);
@@ -52,8 +56,6 @@ public:
 
 		if(x<x1 && y<y1){
 
-
-			
 			std::cout<<std::endl<<(x1-x)/(y1-y)<<std::endl;
 			if( (y1-y)/(x1-x) < 1 ){
 
@@ -191,5 +193,11 @@ public:
 	void clearLine(){
 		lines.clear();
 		linesvector.clear();
+	}
+
+	void drawBitmap(sf::RenderWindow *window){
+
+		bitmap.animateSprite(window);
+
 	}
 };
