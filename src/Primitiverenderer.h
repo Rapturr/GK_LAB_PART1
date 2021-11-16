@@ -1,7 +1,4 @@
-#define SFML_STATIC
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include <math.h>
+#include "BitmapHandler.h"
 
 
 class PrimitiveRenderer{ 
