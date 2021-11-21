@@ -16,7 +16,7 @@ public:
 	Engine(int width, int height){
 		window.create(sf::VideoMode(width,height),"Tower Defense", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);
 		window.setKeyRepeatEnabled(false);
-		window.setFramerateLimit(5);
+		window.setFramerateLimit(30);
 		originalsize = sf::Vector2u(width, height);
 	}
 	void gamescreen(){
