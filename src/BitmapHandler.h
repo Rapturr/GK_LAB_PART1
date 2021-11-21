@@ -48,10 +48,10 @@ public:
 		direction = dir;
 	}
 
-	void loadffile(){
+	void loadfromfile(){
 
 	}
-	void savetfile(){
+	void savetofile(){
 
 	}
 	void animateSprite(sf::RenderWindow *window){
