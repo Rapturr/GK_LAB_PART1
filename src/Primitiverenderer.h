@@ -1,4 +1,4 @@
-#include "BitmapHandler.h"
+#include "Player.h"
 
 
 class PrimitiveRenderer{ 

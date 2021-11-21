@@ -9,6 +9,7 @@ private:
 std::vector<sf::Texture> texturevec;
 sf::Sprite sprite;
 std::time_t starttime;
+//0 - right; 1 - left; 2 - up; 3 - down
 int direction;
 void loadtextures(){
 	texturevec.resize(16);
@@ -32,6 +33,7 @@ void loadtextures(){
 public:
 	BitmapHandler(){
 		starttime = std::time(nullptr);
+		sprite.setPosition(0,0);
 	}
 	void createbm(){
 		direction = 0;
@@ -39,6 +41,11 @@ public:
 	}
 	
 	void deletesprite(){
+	}
+
+	void changepos(sf::Vector2f pos, int dir){
+		sprite.setPosition(pos);
+		direction = dir;
 	}
 
 	void loadffile(){
@@ -49,26 +56,11 @@ public:
 	}
 	void animateSprite(sf::RenderWindow *window){
 		int i = 0;
-		std::time_t currentTime = std::time(nullptr);
-		while(i<4){
-			if((currentTime-starttime)>=300){
-				if(i > 3+(direction*4))
-				sprite.setTexture(texturevec[i+(direction*4)]);
-				sprite.setPosition(sf::Vector2f(400,400));
-				i++;
-				starttime = std::time(nullptr);
-			 }
-
-			window->draw(sprite);
-		}/*
 		for(int i = 0; i <4; i++){
 			sprite.setTexture(texturevec[i+(direction*4)]);
-			sprite.setPosition(sf::Vector2f(400,400));
 			window->draw(sprite);
 		}
-		*/
 	}
-
 	sf::Sprite copy(){
 		
 	}

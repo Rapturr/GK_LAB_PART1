@@ -11,6 +11,7 @@ LineSegment line2;
 sf::Event evnt;
 PrimitiveRenderer kolo;
 bool linebool = false;
+Player player;
 public:
 	Engine(int width, int height){
 		window.create(sf::VideoMode(width,height),"Tower Defense", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);
@@ -57,24 +58,30 @@ public:
 				line1.reset();
 				line2.reset();
 			}
-			
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::C)){
 				line.reset();
 				line1.reset();
 				linebool = !linebool;
+			}
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::O)){
+				kolo.makeElipsse(sf::Vector2f(100,500),50,60);
+				kolo.makeCircle(sf::Vector2f(500,200),60);
+			}
+			
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)
+			|| sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
+				player.move();
 			}
 
 			window.clear(sf::Color::White);
 			line.drawLine(&window);
 			line1.drawLine(&window);
 			line2.drawLine(&window);
-			if(sf::Keyboard::isKeyPressed(sf::Keyboard::O)){
-				kolo.makeElipsse(sf::Vector2f(100,500),50,60);
-				kolo.makeCircle(sf::Vector2f(500,200),60);
-			}
+			
 
 			kolo.drawElipsse(&window);
 			kolo.drawCircle(&window);
+			player.animate(&window);
 
 			window.display();
 		}
