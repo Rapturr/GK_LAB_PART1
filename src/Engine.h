@@ -7,6 +7,7 @@ sf::Vector2u currsize;
 sf::Vector2u originalsize;
 LineSegment line;
 LineSegment line1;
+LineSegment line2;
 sf::Event evnt;
 PrimitiveRenderer kolo;
 bool linebool = false;
@@ -48,9 +49,13 @@ public:
 					line1.readpointln(&window, 2);
 				}
 			}
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::N)){
+				line2.readpointfill(&window);
+			}
 			if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
 				line.reset();
 				line1.reset();
+				line2.reset();
 			}
 			
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::C)){
@@ -62,9 +67,14 @@ public:
 			window.clear(sf::Color::White);
 			line.drawLine(&window);
 			line1.drawLine(&window);
-		
-			kolo.makeElipsse(sf::Vector2f(100,500),50,60);
+			line2.drawLine(&window);
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::O)){
+				kolo.makeElipsse(sf::Vector2f(100,500),50,60);
+				kolo.makeCircle(sf::Vector2f(500,200),60);
+			}
+
 			kolo.drawElipsse(&window);
+			kolo.drawCircle(&window);
 
 			window.display();
 		}

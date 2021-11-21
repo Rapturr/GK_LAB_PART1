@@ -24,6 +24,14 @@ Point2D punkt;
 		else if(flag == 2)
 			prims.makesfmllineln(punkt1.getPos(),punkt2.getPos());
 	}
+	void makefilledarea(sf::RenderWindow *window){
+		int i = lines.size()-1;
+		prims.makesfmlline(lines);
+		if(i>2){
+			prims.fillArea(sf::Color::Blue);
+			std::cout<<"filling\n";
+		}
+	}
 
 public:
 	LineSegment(){
@@ -60,13 +68,21 @@ public:
 		makeLineln(window, flag);
 	}
 
-	/*void makeLine(sf::RenderWindow *window, int flag){
-		int i = lines.size()-1;
-		if(flag == 1)
-			prims.makeline(punkt1.getPos(),punkt2.getPos());
-		else if(flag == 2)
-			prims.makesfmlline(lines);
-	}*/
+	void readpointfill(sf::RenderWindow *window){
+		punkt.readC(window);
+		sf::Vertex tmp(punkt.getPos());
+		lines.push_back(tmp);
+		if(ch){
+			punkt1.readC(window);
+			ch = false;
+		}
+		else{
+			punkt2.readC(window);
+			ch = true;
+		}
+		makefilledarea(window);
+	}
+
 	void drawLine(sf::RenderWindow *window){
 		punkt1.drawPoint(window);
 		punkt2.drawPoint(window);

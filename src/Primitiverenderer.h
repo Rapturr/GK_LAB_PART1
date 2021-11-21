@@ -4,9 +4,11 @@
 class PrimitiveRenderer{ 
 private:
 	sf::VertexArray triangle;
+	sf::ConvexShape fillshape;
 	sf::VertexArray vertices;
 	sf::Vertex point;
 	std::vector<sf::Vertex> linesvector;
+	std::vector<sf::Vertex> linesvectorfill;
 	std::vector<sf::Vertex> circlevector;
 	std::vector<sf::Vertex> elipssevector;
 	sf::VertexArray lines;
@@ -193,7 +195,10 @@ public:
 	void drawline(sf::RenderWindow *window){
 		//std::cout<<"rysuje sie\n";
 		//window->draw(vertices);
+		
 		window->draw(&linesvector[0],linesvector.size(),sf::LineStrip);
+		window->draw(fillshape);
+		//window->draw(&linesvectorfill[0],linesvectorfill.size(),sf::LineStrip);
 	}
 	
 	void drawRectangle(sf::RenderWindow *window, int posx, int posy, int sizex, int sizey){
@@ -283,11 +288,21 @@ public:
 	void clearLine(){
 		lines.clear();
 		linesvector.clear();
+		fillshape.setPointCount(0);
 	}
 
 	void drawBitmap(sf::RenderWindow *window){
-
 		bitmap.animateSprite(window);
-
+	}
+	
+	void fillArea(sf::Color myColor){
+		linesvectorfill = linesvector;
+		fillshape.setPointCount(linesvectorfill.size());
+		//fillshape.resize(linesvectorfill.size());
+		for(int i = 0; i < linesvectorfill.size(); i++){
+			fillshape.setPoint(i, linesvectorfill[i].position);
+			fillshape.setOutlineColor(myColor);
+			fillshape.setFillColor(myColor);
+		}
 	}
 };
