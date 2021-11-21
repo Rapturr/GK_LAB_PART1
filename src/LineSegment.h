@@ -7,11 +7,30 @@ std::vector<sf::Vertex> lines;
 bool ch;
 PrimitiveRenderer prims;
 Point2D punkt;
+
+	void makeLine(sf::RenderWindow *window, int flag){
+		int i = lines.size()-1;
+		if(flag == 1)
+			prims.makeline(lines);
+			//prims.makeline(punkt1.getPos(),punkt2.getPos());
+		else if(flag == 2)
+			prims.makesfmlline(lines);
+	}
+
+	void makeLineln(sf::RenderWindow *window, int flag){
+		int i = lines.size()-1;
+		if(flag == 1)
+			prims.makelineln(punkt1.getPos(),punkt2.getPos());
+		else if(flag == 2)
+			prims.makesfmllineln(punkt1.getPos(),punkt2.getPos());
+	}
+
 public:
 	LineSegment(){
 		ch = true;
 	}
-	void readpoint(sf::RenderWindow *window){
+	//flag: 1-domyślny, 2-przyrostowy
+	void readpoint(sf::RenderWindow *window, int flag){
 		punkt.readC(window);
 		sf::Vertex tmp(punkt.getPos());
 		lines.push_back(tmp);
@@ -23,15 +42,31 @@ public:
 			punkt2.readC(window);
 			ch = true;
 		}
+		makeLine(window, flag);
 	}
-	//flag: 1-domyślny, 2-przyrostowy
-	void makeLine(sf::RenderWindow *window, int flag){
+	
+	void readpointln(sf::RenderWindow *window, int flag){
+		punkt.readC(window);
+		sf::Vertex tmp(punkt.getPos());
+		lines.push_back(tmp);
+		if(ch){
+			punkt1.readC(window);
+			ch = false;
+		}
+		else{
+			punkt2.readC(window);
+			ch = true;
+		}
+		makeLineln(window, flag);
+	}
+
+	/*void makeLine(sf::RenderWindow *window, int flag){
 		int i = lines.size()-1;
 		if(flag == 1)
 			prims.makeline(punkt1.getPos(),punkt2.getPos());
 		else if(flag == 2)
 			prims.makesfmlline(lines);
-	}
+	}*/
 	void drawLine(sf::RenderWindow *window){
 		punkt1.drawPoint(window);
 		punkt2.drawPoint(window);

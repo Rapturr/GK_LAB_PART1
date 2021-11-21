@@ -39,8 +39,87 @@ public:
 			}
 		}
 	}*/
-	void makeline(sf::Vector2f pos1, sf::Vector2f pos2){
-		int x = pos1.x;
+	void makeline(std::vector<sf::Vertex> line){
+		linesvector.clear();
+		lines.resize(line.size());
+		for(int ln = 0; ln < line.size()-1; ln++){
+
+		int x = line[ln].position.x; //pos1.x;
+		int y = line[ln].position.y;
+		int x1 = line[ln+1].position.x;
+		int y1 = line[ln+1].position.y;
+		if(x>x1){
+			int tempx = x;
+			x = x1;
+			x1 = tempx;
+			int tempy = y;
+			y = y1;
+			y1 = tempy;
+		}
+		
+
+		if(x<x1 && y<y1){
+
+			std::cout<<std::endl<<(x1-x)/(y1-y)<<std::endl;
+			if( (y1-y)/(x1-x) < 1 ){
+
+				std::cout<<"jestem mniejszy od 45 stopni."<<std::endl;
+				float difx = x1-x;
+				float dify = y1-y;
+				float diffy = dify/difx;
+				float diffx = difx/dify;
+				float cx = x;
+				float cy = y;
+				int j = 0;
+				int i = 0;
+				std::vector<sf::Vertex> vericec;
+				for(cx = x; cx<=x1; cx++, cy+=diffy){
+					j++;
+				}
+				vertices.resize(j);
+
+				for(cx = x, cy = y; cx<=x1; cx++, cy+=diffy, i++){
+					vertices[i].position = sf::Vector2f(cx,cy);
+					vertices[i].color = sf::Color::Black;
+					//Do wektora
+					linesvector.push_back(vertices[i]);
+					//i++;
+					//sf::Vertex vert(sf::Vector2f(cx,cy), sf::Color::Black);
+				}
+			}
+			else
+			{
+				std::cout<<"jestem wiekszy od 45 stopni."<<std::endl;
+				float difx = x1-x;
+				float dify = y1-y;
+				float diffy = dify/difx;
+				float diffx = difx/dify;
+				float cx = x;
+				float cy = y;
+				int j = 0;
+				int i = 0;
+				std::vector<sf::Vertex> vericec;
+				for(cx = x; cx<=x1; cx+=diffx, cy++){
+					j++;
+				}
+				vertices.resize(j);
+
+				for(cx = x, cy = y; cx<=x1; cx+=diffx, cy++, i++){
+					vertices[i].position = sf::Vector2f(cx,cy);
+					vertices[i].color = sf::Color::Black;
+					//Do wektora
+					linesvector.push_back(vertices[i]);
+					//i++;
+					//sf::Vertex vert(sf::Vector2f(cx,cy), sf::Color::Black);
+				}
+			}
+		}
+	}
+	}
+
+	void makelineln(sf::Vector2f pos1, sf::Vector2f pos2){
+		linesvector.clear();
+		int x = pos1.x; //pos1.x;
 		int y = pos1.y;
 		int x1 = pos2.x;
 		int y1 = pos2.y;
@@ -110,8 +189,6 @@ public:
 				}
 			}
 		}
-		
-		
 	}
 	void drawline(sf::RenderWindow *window){
 		//std::cout<<"rysuje sie\n";
@@ -190,6 +267,19 @@ public:
 			linesvector.push_back(lines[i]);
 		}
 	}
+	void makesfmllineln(sf::Vector2f pos1, sf::Vector2f pos2){
+		linesvector.clear();
+		sf::Vertex vert;
+		vert.position.x = pos1.x;
+		vert.position.y = pos1.y;
+		vert.color = sf::Color(rand()%255,rand()%255,rand()%255);
+		linesvector.push_back(vert);
+		vert.position.x = pos2.x;
+		vert.position.y = pos2.y;
+		vert.color = sf::Color(rand()%255,rand()%255,rand()%255);
+		linesvector.push_back(vert);
+	}
+
 	void clearLine(){
 		lines.clear();
 		linesvector.clear();

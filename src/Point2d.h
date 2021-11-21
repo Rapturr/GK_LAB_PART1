@@ -22,7 +22,6 @@ public:
 	}
 	void modC(sf::RenderWindow *window){
 		sf::Vector2i pos = sf::Mouse::getPosition(*window);
-		std::cout<<"changed";
 		point.x = pos.x;
 		point.y = pos.y;
 		
