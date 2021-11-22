@@ -9,6 +9,8 @@ private:
 std::vector<sf::Texture> texturevec;
 sf::Sprite sprite;
 std::time_t starttime;
+sf::Clock clock;
+int animationframe = 0;
 //0 - right; 1 - left; 2 - up; 3 - down
 int direction;
 void loadtextures(){
@@ -34,6 +36,7 @@ public:
 	BitmapHandler(){
 		starttime = std::time(nullptr);
 		sprite.setPosition(0,0);
+		clock.restart();
 	}
 	void createbm(){
 		direction = 0;
@@ -55,13 +58,22 @@ public:
 
 	}
 	void animateSprite(sf::RenderWindow *window){
-		int i = 0;
-		for(int i = 0; i <4; i++){
-			sprite.setTexture(texturevec[i+(direction*4)]);
-			window->draw(sprite);
-			std::cout<<"it's:  "<<i+(direction*4)<<std::endl;
+		if(clock.getElapsedTime().asMilliseconds() > 50.0f){
+			sprite.setTexture(texturevec[animationframe+(direction*4)]);
+			animationframe++;
+			if(animationframe >= 4){
+				animationframe = 0;
+			}
+				clock.restart();
 		}
+		window->draw(sprite);
 	}
+
+	void draw(sf::RenderWindow *window){
+		sprite.setTexture(texturevec[direction+(direction*4)]);
+		window->draw(sprite);
+	}
+
 	sf::Sprite copy(){
 		
 	}

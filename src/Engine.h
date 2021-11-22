@@ -68,12 +68,16 @@ public:
 				kolo.makeCircle(sf::Vector2f(500,200),60);
 			}
 			
+			window.clear(sf::Color::White);
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)
 			|| sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 				player.move();
+				player.animate(&window);
+			}
+			else{
+				player.draw(&window);
 			}
 
-			window.clear(sf::Color::White);
 			line.drawLine(&window);
 			line1.drawLine(&window);
 			line2.drawLine(&window);
@@ -81,7 +85,6 @@ public:
 
 			kolo.drawElipsse(&window);
 			kolo.drawCircle(&window);
-			player.animate(&window);
 
 			window.display();
 		}

@@ -31,4 +31,7 @@ public:
         }
         playerbm.changepos(position,dir);
     }
+    void draw(sf::RenderWindow *window){
+        playerbm.draw(window);
+    }
 };
