@@ -59,6 +59,7 @@ public:
 		for(int i = 0; i <4; i++){
 			sprite.setTexture(texturevec[i+(direction*4)]);
 			window->draw(sprite);
+			std::cout<<"it's:  "<<i+(direction*4)<<std::endl;
 		}
 	}
 	sf::Sprite copy(){
