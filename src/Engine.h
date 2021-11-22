@@ -11,17 +11,56 @@ private:
 	Odpowiada za otwarcie i wyswietlanie zawartosci okna silnika
 */
 sf::RenderWindow window;
-
+//! objekt currsize
+/*!
+	currsize przechowuje aktualny rozmiar okna
+*/
 sf::Vector2u currsize;
+//! objekt originalsize
+/*!
+	przechowuje oryginalny rozmiar okna
+*/
 sf::Vector2u originalsize;
+//! objekt line
+/*!
+	z jego pomocą tworzymy linie, jest to objekt typu PrimitiveRenderer
+*/
 LineSegment line;
+//! objekt line1
+/*!
+	z jego pomocą tworzymy linie, jest to objekt typu PrimitiveRenderer
+*/
 LineSegment line1;
+//! objekt line2
+/*!
+	z jego pomocą tworzymy linie, jest to objekt typu PrimitiveRenderer
+*/
 LineSegment line2;
+//! objekt evnt
+/*!
+	Obsługuje zdarzenia
+*/
 sf::Event evnt;
+//! objekt kolo
+/*!
+	z jego pomocą tworzymy koła i elipsy, jest to objekt typu PrimitiveRenderer
+*/
 PrimitiveRenderer kolo;
+//! objekt linebool
+/*!
+	wskazuje na typ rysowanej linii
+*/
 bool linebool = false;
+//! objekt player
+/*!
+	obiekt typu Player
+*/
 Player player;
 public:
+	//!Konstruktor klasy Engine
+	/*!
+		tutaj obslugiwana jest glowna petla gry, 
+	*/
 	Engine(int width, int height){
 		window.create(sf::VideoMode(width,height),"Tower Defense", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);
 		window.setKeyRepeatEnabled(false);
