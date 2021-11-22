@@ -67,6 +67,7 @@ public:
 				clock.restart();
 		}
 		window->draw(sprite);
+
 	}
 
 	void draw(sf::RenderWindow *window){

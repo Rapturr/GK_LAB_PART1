@@ -1,8 +1,17 @@
 #include "LineSegment.h"
 
+ //!Klasa Engine
+ /*!
+	Glowna klasa silnika, odpowiada za cos
+ */
 class Engine{
 private:
+//! Obiekt window
+/*!
+	Odpowiada za otwarcie i wyswietlanie zawartosci okna silnika
+*/
 sf::RenderWindow window;
+
 sf::Vector2u currsize;
 sf::Vector2u originalsize;
 LineSegment line;
@@ -35,6 +44,7 @@ public:
 						window.create(sf::VideoMode(originalsize.x,originalsize.y),"Tower Defense", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);
 						window.setPosition(sf::Vector2i(0,0));
 					}
+					window.setFramerateLimit(30);
 				}
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::L)){
 				if(linebool)
