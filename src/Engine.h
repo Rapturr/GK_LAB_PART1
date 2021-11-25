@@ -1,65 +1,35 @@
 #include "LineSegment.h"
 
- //!Klasa Engine
- /*!
-	Glowna klasa silnika, odpowiada za cos
- */
+/** Klasa Engine
+ * Glowna klasa silnika, Wywołuje metody związane z silnikiem
+ * @param window jest obiektem klasy sf::RenderWindow, służy do stworzenia okna silnika.
+ * @param currsize przechowuje aktualny rozmiar okna
+ * @param originalsize przechowuje oryginalny rozmiar okna
+ * @param line z jego pomocą tworzymy linie, jest to objekt typu LineSegment
+ * @param line1 z jego pomocą tworzymy linie, jest to objekt typu LineSegment
+ * @param line2 z jego pomocą tworzymy linie, jest to objekt typu LineSegment
+ * @param evnt Obsługuje zdarzenia
+ * @param kolo z jego pomocą tworzymy koła i elipsy, jest to objekt typu PrimitiveRenderer
+ * @param linebool wskazuje na typ rysowanej linii
+ * @param player obiekt typu Player służy do stworzenia i poruszania się postaci
+ * 
+*/
 class Engine{
 private:
-//! Obiekt window
-/*!
-	Odpowiada za otwarcie i wyswietlanie zawartosci okna silnika
-*/
 sf::RenderWindow window;
-//! objekt currsize
-/*!
-	currsize przechowuje aktualny rozmiar okna
-*/
 sf::Vector2u currsize;
-//! objekt originalsize
-/*!
-	przechowuje oryginalny rozmiar okna
-*/
 sf::Vector2u originalsize;
-//! objekt line
-/*!
-	z jego pomocą tworzymy linie, jest to objekt typu PrimitiveRenderer
-*/
 LineSegment line;
-//! objekt line1
-/*!
-	z jego pomocą tworzymy linie, jest to objekt typu PrimitiveRenderer
-*/
 LineSegment line1;
-//! objekt line2
-/*!
-	z jego pomocą tworzymy linie, jest to objekt typu PrimitiveRenderer
-*/
 LineSegment line2;
-//! objekt evnt
-/*!
-	Obsługuje zdarzenia
-*/
 sf::Event evnt;
-//! objekt kolo
-/*!
-	z jego pomocą tworzymy koła i elipsy, jest to objekt typu PrimitiveRenderer
-*/
 PrimitiveRenderer kolo;
-//! objekt linebool
-/*!
-	wskazuje na typ rysowanej linii
-*/
 bool linebool = false;
-//! objekt player
-/*!
-	obiekt typu Player
-*/
 Player player;
 public:
-	//!Konstruktor klasy Engine
-	/*!
-		tutaj obslugiwana jest glowna petla gry, 
+	/** Konstruktor klasy Engine
+	 * tutaj obslugiwana jest glowna petla programu
+	 * Tworzone oraz konfigurowane jest okno silnika
 	*/
 	Engine(int width, int height){
 		window.create(sf::VideoMode(width,height),"Tower Defense", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);
@@ -67,6 +37,9 @@ public:
 		window.setFramerateLimit(30);
 		originalsize = sf::Vector2u(width, height);
 	}
+	/** gamescreen
+	 * główna pętla silnika, działa kiedy okno jest otwarte.
+	*/
 	void gamescreen(){
 		while(window.isOpen()){
 			while (window.pollEvent(evnt)){

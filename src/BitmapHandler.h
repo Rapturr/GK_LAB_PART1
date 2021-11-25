@@ -4,6 +4,9 @@
 #include <math.h>
 #include <ctime>
 
+/* Klasa BitmapHandler  - odpowiada za przetrzymywanie obrazów oraz wyświetlanie go na ekranie
+*/
+
 class BitmapHandler{
 private:
 std::vector<sf::Texture> texturevec;
@@ -13,6 +16,10 @@ sf::Clock clock;
 int animationframe = 0;
 //0 - right; 1 - left; 2 - up; 3 - down
 int direction;
+
+
+/** loadtextures - funkcja odpowiadająca za rysownie tekstur z pliku
+*/
 void loadtextures(){
 	texturevec.resize(16);
 	texturevec[0].loadFromFile("../assets/R0.png");
@@ -33,30 +40,33 @@ void loadtextures(){
 	texturevec[15].loadFromFile("../assets/D3.png");
 }
 public:
+	/** kostruktor ustawia czas i pozycje spritów 
+	*/
 	BitmapHandler(){
 		starttime = std::time(nullptr);
 		sprite.setPosition(0,0);
 		clock.restart();
 	}
+
+	/** wywołuję funkcje odpowiadającą za dodawanie tekstur oraz ustawia kierunke w którym postać jest zwrócona 
+	*/
 	void createbm(){
 		direction = 0;
 		loadtextures();
 	}
 	
-	void deletesprite(){
-	}
 
+	/** funkcja zmieniająca pozycje sprita
+	*/
 	void changepos(sf::Vector2f pos, int dir){
 		sprite.setPosition(pos);
 		direction = dir;
 	}
 
-	void loadfromfile(){
 
-	}
-	void savetofile(){
-
-	}
+	/** funkcja odpowaidajaca za zmiane klatek animacji i rysownie jej na ekranie
+	* @param window wskaźnik na okno gry
+	*/
 	void animateSprite(sf::RenderWindow *window){
 		if(clock.getElapsedTime().asMilliseconds() > 50.0f){
 			sprite.setTexture(texturevec[animationframe+(direction*4)]);
@@ -70,12 +80,11 @@ public:
 
 	}
 
+	/** funkcja za rysownie sprita
+	* @param window wskaźnik na okno gry
+	*/
 	void draw(sf::RenderWindow *window){
 		sprite.setTexture(texturevec[direction+(direction*4)]);
 		window->draw(sprite);
-	}
-
-	sf::Sprite copy(){
-		
 	}
 };

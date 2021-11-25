@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>GK_Lab_3ID14A_Stokowiec_Skrobisz_Pawlik: Plik źródłowy E:/moje/Studia_Sem_5/studia/Podstawy_grafiki_komputerowej/Lab/pr1/projekt/GK_LAB_PART1/src/BitmapHandler.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">GK_Lab_3ID14A_Stokowiec_Skrobisz_Pawlik
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">GK Silnik graficzny</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_bitmap_handler_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">BitmapHandler.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_bitmap_handler_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#define SFML_STATIC</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno"><a class="line" href="_bitmap_handler_8h.html#a1b56d39e764327ab332548f22cfbbd9c">    2</a></span>&#160;<span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">/* Klasa BitmapHandler  - odpowiada za przetrzymywanie obrazów oraz wyświetlanie go na ekranie</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_bitmap_handler.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_bitmap_handler.html">BitmapHandler</a>{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;std::vector&lt;sf::Texture&gt; texturevec;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;sf::Sprite sprite;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;std::time_t starttime;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;sf::Clock clock;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">int</span> animationframe = 0;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//0 - right; 1 - left; 2 - up; 3 - down</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">int</span> direction;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> loadtextures(){</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    texturevec.resize(16);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    texturevec[0].loadFromFile(<span class="stringliteral">&quot;../assets/R0.png&quot;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    texturevec[1].loadFromFile(<span class="stringliteral">&quot;../assets/R1.png&quot;</span>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    texturevec[2].loadFromFile(<span class="stringliteral">&quot;../assets/R2.png&quot;</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    texturevec[3].loadFromFile(<span class="stringliteral">&quot;../assets/R3.png&quot;</span>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    texturevec[4].loadFromFile(<span class="stringliteral">&quot;../assets/L0.png&quot;</span>);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    texturevec[5].loadFromFile(<span class="stringliteral">&quot;../assets/L1.png&quot;</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    texturevec[6].loadFromFile(<span class="stringliteral">&quot;../assets/L2.png&quot;</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    texturevec[7].loadFromFile(<span class="stringliteral">&quot;../assets/L3.png&quot;</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    texturevec[8].loadFromFile(<span class="stringliteral">&quot;../assets/U0.png&quot;</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    texturevec[9].loadFromFile(<span class="stringliteral">&quot;../assets/U1.png&quot;</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    texturevec[10].loadFromFile(<span class="stringliteral">&quot;../assets/U2.png&quot;</span>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    texturevec[11].loadFromFile(<span class="stringliteral">&quot;../assets/U3.png&quot;</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    texturevec[12].loadFromFile(<span class="stringliteral">&quot;../assets/D0.png&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    texturevec[13].loadFromFile(<span class="stringliteral">&quot;../assets/D1.png&quot;</span>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    texturevec[14].loadFromFile(<span class="stringliteral">&quot;../assets/D2.png&quot;</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    texturevec[15].loadFromFile(<span class="stringliteral">&quot;../assets/D3.png&quot;</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_bitmap_handler.html#a66410bb36dd297b75a9ec6e8949a49fc">   45</a></span>&#160;    <a class="code" href="class_bitmap_handler.html#a66410bb36dd297b75a9ec6e8949a49fc">BitmapHandler</a>(){</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        starttime = std::time(<span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        sprite.setPosition(0,0);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        clock.restart();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_bitmap_handler.html#a1fbf19bf98b3e348b2efcc73670369cc">   53</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_bitmap_handler.html#a1fbf19bf98b3e348b2efcc73670369cc">createbm</a>(){</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        direction = 0;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        loadtextures();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_bitmap_handler.html#a33db9c8be19bf4e5913721fc0aab0a75">   61</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_bitmap_handler.html#a33db9c8be19bf4e5913721fc0aab0a75">changepos</a>(sf::Vector2f pos, <span class="keywordtype">int</span> dir){</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        sprite.setPosition(pos);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        direction = dir;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_bitmap_handler.html#a482afab986b6cb8bbf83271b1c58cff9">   70</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_bitmap_handler.html#a482afab986b6cb8bbf83271b1c58cff9">animateSprite</a>(sf::RenderWindow *window){</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">if</span>(clock.getElapsedTime().asMilliseconds() &gt; 50.0f){</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            sprite.setTexture(texturevec[animationframe+(direction*4)]);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            animationframe++;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">if</span>(animationframe &gt;= 4){</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                animationframe = 0;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                clock.restart();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        window-&gt;draw(sprite);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_bitmap_handler.html#ad3184b153fe194cb833c6f3dae1e5727">   86</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_bitmap_handler.html#ad3184b153fe194cb833c6f3dae1e5727">draw</a>(sf::RenderWindow *window){</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        sprite.setTexture(texturevec[direction+(direction*4)]);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        window-&gt;draw(sprite);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_bitmap_handler_html_a66410bb36dd297b75a9ec6e8949a49fc"><div class="ttname"><a href="class_bitmap_handler.html#a66410bb36dd297b75a9ec6e8949a49fc">BitmapHandler::BitmapHandler</a></div><div class="ttdeci">BitmapHandler()</div><div class="ttdef"><b>Definition:</b> BitmapHandler.h:45</div></div>
+<div class="ttc" id="aclass_bitmap_handler_html_a33db9c8be19bf4e5913721fc0aab0a75"><div class="ttname"><a href="class_bitmap_handler.html#a33db9c8be19bf4e5913721fc0aab0a75">BitmapHandler::changepos</a></div><div class="ttdeci">void changepos(sf::Vector2f pos, int dir)</div><div class="ttdef"><b>Definition:</b> BitmapHandler.h:61</div></div>
+<div class="ttc" id="aclass_bitmap_handler_html_a482afab986b6cb8bbf83271b1c58cff9"><div class="ttname"><a href="class_bitmap_handler.html#a482afab986b6cb8bbf83271b1c58cff9">BitmapHandler::animateSprite</a></div><div class="ttdeci">void animateSprite(sf::RenderWindow *window)</div><div class="ttdef"><b>Definition:</b> BitmapHandler.h:70</div></div>
+<div class="ttc" id="aclass_bitmap_handler_html_ad3184b153fe194cb833c6f3dae1e5727"><div class="ttname"><a href="class_bitmap_handler.html#ad3184b153fe194cb833c6f3dae1e5727">BitmapHandler::draw</a></div><div class="ttdeci">void draw(sf::RenderWindow *window)</div><div class="ttdef"><b>Definition:</b> BitmapHandler.h:86</div></div>
+<div class="ttc" id="aclass_bitmap_handler_html"><div class="ttname"><a href="class_bitmap_handler.html">BitmapHandler</a></div><div class="ttdef"><b>Definition:</b> BitmapHandler.h:10</div></div>
+<div class="ttc" id="aclass_bitmap_handler_html_a1fbf19bf98b3e348b2efcc73670369cc"><div class="ttname"><a href="class_bitmap_handler.html#a1fbf19bf98b3e348b2efcc73670369cc">BitmapHandler::createbm</a></div><div class="ttdeci">void createbm()</div><div class="ttdef"><b>Definition:</b> BitmapHandler.h:53</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_cd3085d5e086ffd416a7dd194f160e19.html">moje</a></li><li class="navelem"><a class="el" href="dir_a8379af3d98889d839ecf644f3f3952b.html">Studia_Sem_5</a></li><li class="navelem"><a class="el" href="dir_c323dbfbd1341806e524e8b037653df1.html">studia</a></li><li class="navelem"><a class="el" href="dir_2d353d1054dde9d3e36e159fcfb807b2.html">Podstawy_grafiki_komputerowej</a></li><li class="navelem"><a class="el" href="dir_0b15c5a105605d63a5f3067368cc7e8a.html">Lab</a></li><li class="navelem"><a class="el" href="dir_b45088721d5d8c395a76a9881f7315cc.html">pr1</a></li><li class="navelem"><a class="el" href="dir_afffe6804b3492072dc3b0ed7931dce1.html">projekt</a></li><li class="navelem"><a class="el" href="dir_2037dfc592179a65d332cb51cee15f08.html">GK_LAB_PART1</a></li><li class="navelem"><a class="el" href="dir_32aac209094abaaa0ec981b81d546529.html">src</a></li><li class="navelem"><a class="el" href="_bitmap_handler_8h.html">BitmapHandler.h</a></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
+  </ul>
+</div>
+</body>
+</html>

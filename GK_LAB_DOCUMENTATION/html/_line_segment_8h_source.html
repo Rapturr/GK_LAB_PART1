@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>GK_Lab_3ID14A_Stokowiec_Skrobisz_Pawlik: Plik źródłowy E:/moje/Studia_Sem_5/studia/Podstawy_grafiki_komputerowej/Lab/pr1/projekt/GK_LAB_PART1/src/LineSegment.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">GK_Lab_3ID14A_Stokowiec_Skrobisz_Pawlik
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">GK Silnik graficzny</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_line_segment_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">LineSegment.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_line_segment_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_point2d_8h.html">Point2d.h</a>&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_line_segment.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_line_segment.html">LineSegment</a>{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<a class="code" href="class_point2_d.html">Point2D</a> punkt;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<a class="code" href="class_point2_d.html">Point2D</a> punkt1;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<a class="code" href="class_point2_d.html">Point2D</a> punkt2;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;std::vector&lt;sf::Vertex&gt; lines;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> ch;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<a class="code" href="class_primitive_renderer.html">PrimitiveRenderer</a> prims;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> makeLine(sf::RenderWindow *window, <span class="keywordtype">int</span> flag){</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">int</span> i = lines.size()-1;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">if</span>(flag == 1)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            prims.<a class="code" href="class_primitive_renderer.html#a94e5958173b1026295cb98ad18f34138">makeline</a>(lines);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(flag == 2)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            prims.<a class="code" href="class_primitive_renderer.html#a8cf359c00b965cc05827809aa6b1d2f8">makesfmlline</a>(lines);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> makeLineln(sf::RenderWindow *window, <span class="keywordtype">int</span> flag){</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">int</span> i = lines.size()-1;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">if</span>(flag == 1)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            prims.<a class="code" href="class_primitive_renderer.html#a6d722ff76f5f740e32f4fd19a1061770">makelineln</a>(punkt1.<a class="code" href="class_point2_d.html#a59659c1817e468598357decbe10734d0">getPos</a>(),punkt2.<a class="code" href="class_point2_d.html#a59659c1817e468598357decbe10734d0">getPos</a>());</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(flag == 2)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            prims.<a class="code" href="class_primitive_renderer.html#a74e43b6170cfe23991ef5bba1bb3185f">makesfmllineln</a>(punkt1.<a class="code" href="class_point2_d.html#a59659c1817e468598357decbe10734d0">getPos</a>(),punkt2.<a class="code" href="class_point2_d.html#a59659c1817e468598357decbe10734d0">getPos</a>());</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> makefilledarea(sf::RenderWindow *window){</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">int</span> i = lines.size()-1;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        prims.<a class="code" href="class_primitive_renderer.html#a8cf359c00b965cc05827809aa6b1d2f8">makesfmlline</a>(lines);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">if</span>(i&gt;2){</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            prims.<a class="code" href="class_primitive_renderer.html#a90f3686e77537bf30358bd63c2f90e39">fillArea</a>(sf::Color::Blue);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_line_segment.html#a4c2da2ff2d3979f28bfcb24948a8e6a9">   62</a></span>&#160;    <a class="code" href="class_line_segment.html#a4c2da2ff2d3979f28bfcb24948a8e6a9">LineSegment</a>(){</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        ch = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">//flag: 1-domyślny, 2-przyrostowy</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_line_segment.html#a6e817729c86bf4585b06c808527f3e87">   72</a></span>&#160;<span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_line_segment.html#a6e817729c86bf4585b06c808527f3e87">readpoint</a>(sf::RenderWindow *window, <span class="keywordtype">int</span> flag){</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        punkt.<a class="code" href="class_point2_d.html#a4f7c7135512c2f31eab762dd257ce151">readC</a>(window);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        sf::Vertex tmp(punkt.<a class="code" href="class_point2_d.html#a59659c1817e468598357decbe10734d0">getPos</a>());</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        lines.push_back(tmp);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">if</span>(ch){</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            punkt1.<a class="code" href="class_point2_d.html#a4f7c7135512c2f31eab762dd257ce151">readC</a>(window);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            ch = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            punkt2.<a class="code" href="class_point2_d.html#a4f7c7135512c2f31eab762dd257ce151">readC</a>(window);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            ch = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        makeLine(window, flag);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="class_line_segment.html#a165e5406cd4b399dfae2df5f05933e3b">   93</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_line_segment.html#a165e5406cd4b399dfae2df5f05933e3b">readpointln</a>(sf::RenderWindow *window, <span class="keywordtype">int</span> flag){</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        punkt.<a class="code" href="class_point2_d.html#a4f7c7135512c2f31eab762dd257ce151">readC</a>(window);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        sf::Vertex tmp(punkt.<a class="code" href="class_point2_d.html#a59659c1817e468598357decbe10734d0">getPos</a>());</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        lines.push_back(tmp);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span>(ch){</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            punkt1.<a class="code" href="class_point2_d.html#a4f7c7135512c2f31eab762dd257ce151">readC</a>(window);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            ch = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            punkt2.<a class="code" href="class_point2_d.html#a4f7c7135512c2f31eab762dd257ce151">readC</a>(window);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            ch = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        makeLineln(window, flag);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="class_line_segment.html#a1d4e9ecc2c23ec782f67cb5b01e6bf92">  112</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_line_segment.html#a1d4e9ecc2c23ec782f67cb5b01e6bf92">readpointfill</a>(sf::RenderWindow *window){</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        punkt.<a class="code" href="class_point2_d.html#a4f7c7135512c2f31eab762dd257ce151">readC</a>(window);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        sf::Vertex tmp(punkt.<a class="code" href="class_point2_d.html#a59659c1817e468598357decbe10734d0">getPos</a>());</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        lines.push_back(tmp);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">if</span>(ch){</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            punkt1.<a class="code" href="class_point2_d.html#a4f7c7135512c2f31eab762dd257ce151">readC</a>(window);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            ch = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            punkt2.<a class="code" href="class_point2_d.html#a4f7c7135512c2f31eab762dd257ce151">readC</a>(window);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            ch = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        makefilledarea(window);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="class_line_segment.html#af182f2998af57b6616c1be4937707cba">  131</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_line_segment.html#af182f2998af57b6616c1be4937707cba">drawLine</a>(sf::RenderWindow *window){</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        punkt1.<a class="code" href="class_point2_d.html#ad70e5f47ef39fbcdaa96c5bf8c3cb7b7">drawPoint</a>(window);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        punkt2.<a class="code" href="class_point2_d.html#ad70e5f47ef39fbcdaa96c5bf8c3cb7b7">drawPoint</a>(window);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        prims.<a class="code" href="class_primitive_renderer.html#a94dc36b083e32f7b5f8d299064549b7a">drawline</a>(window);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="class_line_segment.html#a83ca01b197ecb8c6d727db3c264247c0">  140</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_line_segment.html#a83ca01b197ecb8c6d727db3c264247c0">reset</a>(){</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; lines.size(); i++){</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            lines.clear();</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        prims.<a class="code" href="class_primitive_renderer.html#a2530b01323da23f1b62ca4f8fecc259e">clearLine</a>();</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;};</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_primitive_renderer_html_a2530b01323da23f1b62ca4f8fecc259e"><div class="ttname"><a href="class_primitive_renderer.html#a2530b01323da23f1b62ca4f8fecc259e">PrimitiveRenderer::clearLine</a></div><div class="ttdeci">void clearLine()</div><div class="ttdef"><b>Definition:</b> Primitiverenderer.h:304</div></div>
+<div class="ttc" id="aclass_primitive_renderer_html_a94dc36b083e32f7b5f8d299064549b7a"><div class="ttname"><a href="class_primitive_renderer.html#a94dc36b083e32f7b5f8d299064549b7a">PrimitiveRenderer::drawline</a></div><div class="ttdeci">void drawline(sf::RenderWindow *window)</div><div class="ttdef"><b>Definition:</b> Primitiverenderer.h:184</div></div>
+<div class="ttc" id="aclass_primitive_renderer_html_a90f3686e77537bf30358bd63c2f90e39"><div class="ttname"><a href="class_primitive_renderer.html#a90f3686e77537bf30358bd63c2f90e39">PrimitiveRenderer::fillArea</a></div><div class="ttdeci">void fillArea(sf::Color myColor)</div><div class="ttdef"><b>Definition:</b> Primitiverenderer.h:314</div></div>
+<div class="ttc" id="aclass_line_segment_html_a1d4e9ecc2c23ec782f67cb5b01e6bf92"><div class="ttname"><a href="class_line_segment.html#a1d4e9ecc2c23ec782f67cb5b01e6bf92">LineSegment::readpointfill</a></div><div class="ttdeci">void readpointfill(sf::RenderWindow *window)</div><div class="ttdef"><b>Definition:</b> LineSegment.h:112</div></div>
+<div class="ttc" id="aclass_point2_d_html"><div class="ttname"><a href="class_point2_d.html">Point2D</a></div><div class="ttdef"><b>Definition:</b> Point2d.h:7</div></div>
+<div class="ttc" id="aclass_primitive_renderer_html_a94e5958173b1026295cb98ad18f34138"><div class="ttname"><a href="class_primitive_renderer.html#a94e5958173b1026295cb98ad18f34138">PrimitiveRenderer::makeline</a></div><div class="ttdeci">void makeline(std::vector&lt; sf::Vertex &gt; line)</div><div class="ttdef"><b>Definition:</b> Primitiverenderer.h:29</div></div>
+<div class="ttc" id="aclass_line_segment_html_a83ca01b197ecb8c6d727db3c264247c0"><div class="ttname"><a href="class_line_segment.html#a83ca01b197ecb8c6d727db3c264247c0">LineSegment::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdef"><b>Definition:</b> LineSegment.h:140</div></div>
+<div class="ttc" id="aclass_point2_d_html_a59659c1817e468598357decbe10734d0"><div class="ttname"><a href="class_point2_d.html#a59659c1817e468598357decbe10734d0">Point2D::getPos</a></div><div class="ttdeci">sf::Vector2f getPos()</div><div class="ttdef"><b>Definition:</b> Point2d.h:22</div></div>
+<div class="ttc" id="aclass_line_segment_html_a165e5406cd4b399dfae2df5f05933e3b"><div class="ttname"><a href="class_line_segment.html#a165e5406cd4b399dfae2df5f05933e3b">LineSegment::readpointln</a></div><div class="ttdeci">void readpointln(sf::RenderWindow *window, int flag)</div><div class="ttdef"><b>Definition:</b> LineSegment.h:93</div></div>
+<div class="ttc" id="aclass_primitive_renderer_html"><div class="ttname"><a href="class_primitive_renderer.html">PrimitiveRenderer</a></div><div class="ttdef"><b>Definition:</b> Primitiverenderer.h:14</div></div>
+<div class="ttc" id="aclass_point2_d_html_ad70e5f47ef39fbcdaa96c5bf8c3cb7b7"><div class="ttname"><a href="class_point2_d.html#ad70e5f47ef39fbcdaa96c5bf8c3cb7b7">Point2D::drawPoint</a></div><div class="ttdeci">void drawPoint(sf::RenderWindow *window)</div><div class="ttdef"><b>Definition:</b> Point2d.h:48</div></div>
+<div class="ttc" id="aclass_primitive_renderer_html_a8cf359c00b965cc05827809aa6b1d2f8"><div class="ttname"><a href="class_primitive_renderer.html#a8cf359c00b965cc05827809aa6b1d2f8">PrimitiveRenderer::makesfmlline</a></div><div class="ttdeci">void makesfmlline(std::vector&lt; sf::Vertex &gt; line)</div><div class="ttdef"><b>Definition:</b> Primitiverenderer.h:274</div></div>
+<div class="ttc" id="aclass_primitive_renderer_html_a74e43b6170cfe23991ef5bba1bb3185f"><div class="ttname"><a href="class_primitive_renderer.html#a74e43b6170cfe23991ef5bba1bb3185f">PrimitiveRenderer::makesfmllineln</a></div><div class="ttdeci">void makesfmllineln(sf::Vector2f pos1, sf::Vector2f pos2)</div><div class="ttdef"><b>Definition:</b> Primitiverenderer.h:288</div></div>
+<div class="ttc" id="aclass_line_segment_html_a4c2da2ff2d3979f28bfcb24948a8e6a9"><div class="ttname"><a href="class_line_segment.html#a4c2da2ff2d3979f28bfcb24948a8e6a9">LineSegment::LineSegment</a></div><div class="ttdeci">LineSegment()</div><div class="ttdef"><b>Definition:</b> LineSegment.h:62</div></div>
+<div class="ttc" id="aclass_line_segment_html"><div class="ttname"><a href="class_line_segment.html">LineSegment</a></div><div class="ttdef"><b>Definition:</b> LineSegment.h:12</div></div>
+<div class="ttc" id="aclass_line_segment_html_af182f2998af57b6616c1be4937707cba"><div class="ttname"><a href="class_line_segment.html#af182f2998af57b6616c1be4937707cba">LineSegment::drawLine</a></div><div class="ttdeci">void drawLine(sf::RenderWindow *window)</div><div class="ttdef"><b>Definition:</b> LineSegment.h:131</div></div>
+<div class="ttc" id="aclass_line_segment_html_a6e817729c86bf4585b06c808527f3e87"><div class="ttname"><a href="class_line_segment.html#a6e817729c86bf4585b06c808527f3e87">LineSegment::readpoint</a></div><div class="ttdeci">void readpoint(sf::RenderWindow *window, int flag)</div><div class="ttdef"><b>Definition:</b> LineSegment.h:72</div></div>
+<div class="ttc" id="a_point2d_8h_html"><div class="ttname"><a href="_point2d_8h.html">Point2d.h</a></div></div>
+<div class="ttc" id="aclass_primitive_renderer_html_a6d722ff76f5f740e32f4fd19a1061770"><div class="ttname"><a href="class_primitive_renderer.html#a6d722ff76f5f740e32f4fd19a1061770">PrimitiveRenderer::makelineln</a></div><div class="ttdeci">void makelineln(sf::Vector2f pos1, sf::Vector2f pos2)</div><div class="ttdef"><b>Definition:</b> Primitiverenderer.h:109</div></div>
+<div class="ttc" id="aclass_point2_d_html_a4f7c7135512c2f31eab762dd257ce151"><div class="ttname"><a href="class_point2_d.html#a4f7c7135512c2f31eab762dd257ce151">Point2D::readC</a></div><div class="ttdeci">void readC(sf::RenderWindow *window)</div><div class="ttdef"><b>Definition:</b> Point2d.h:29</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_cd3085d5e086ffd416a7dd194f160e19.html">moje</a></li><li class="navelem"><a class="el" href="dir_a8379af3d98889d839ecf644f3f3952b.html">Studia_Sem_5</a></li><li class="navelem"><a class="el" href="dir_c323dbfbd1341806e524e8b037653df1.html">studia</a></li><li class="navelem"><a class="el" href="dir_2d353d1054dde9d3e36e159fcfb807b2.html">Podstawy_grafiki_komputerowej</a></li><li class="navelem"><a class="el" href="dir_0b15c5a105605d63a5f3067368cc7e8a.html">Lab</a></li><li class="navelem"><a class="el" href="dir_b45088721d5d8c395a76a9881f7315cc.html">pr1</a></li><li class="navelem"><a class="el" href="dir_afffe6804b3492072dc3b0ed7931dce1.html">projekt</a></li><li class="navelem"><a class="el" href="dir_2037dfc592179a65d332cb51cee15f08.html">GK_LAB_PART1</a></li><li class="navelem"><a class="el" href="dir_32aac209094abaaa0ec981b81d546529.html">src</a></li><li class="navelem"><a class="el" href="_line_segment_8h.html">LineSegment.h</a></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,46 +1,31 @@
 #include "Player.h"
 
-
+/** PrimitiveRenderer
+ * odpowiada za tworzenie i rysowanie punktów linii i figur
+ * @param fillshape objekt typu ConvexShape służący do narysowania krzywej wypełnionej
+ * @param vertices Obiekt typu vertexArray, który wykorzystujemy do narysowania linii i krzywej
+ * @param lines Obiekt typu vertexArray, który wykorzystujemy do narysowania linii i krzywej
+ * @param point obiekt typu Vertex, który wykorzystujemy do narysowania koła i elipsy
+ * @param linesvector wektor obiektów Vertex, który jest wykorzystywany do narysowania linii i krzywej
+ * @param linesvectorfill wektor obiektów Vertex, który jest wykorzystywany do narysowania Krzywej wypełnionej
+ * @param circlevector wektor obiektów Vertex, który jest wykorzystywany do narysowania koła
+ * @param ellipssevector wektor obiektów Vertex, który jest wykorzystywany do narysowania elipsy
+*/
 class PrimitiveRenderer{ 
 private:
-	sf::VertexArray triangle;
 	sf::ConvexShape fillshape;
 	sf::VertexArray vertices;
+	sf::VertexArray lines;
 	sf::Vertex point;
 	std::vector<sf::Vertex> linesvector;
 	std::vector<sf::Vertex> linesvectorfill;
 	std::vector<sf::Vertex> circlevector;
 	std::vector<sf::Vertex> elipssevector;
-	sf::VertexArray lines;
-	BitmapHandler bitmap;
 public:
-	PrimitiveRenderer(){
-		bitmap.createbm();
-	}
-	void shape(int width, int height){
-		triangle.setPrimitiveType(sf::Triangles);
-		triangle.resize(3);
-		triangle[0].position = sf::Vector2f(10, 10);
-		triangle[1].position = sf::Vector2f(width*0.5, 10);
-		triangle[2].position = sf::Vector2f(width*0.5, height*0.5);
-		triangle[0].color = sf::Color::Red;
-		triangle[1].color = sf::Color::Blue;
-		triangle[2].color = sf::Color::Green;
-	}
-	/*void drawline(int x, int y, int x1, int y1, sf::RenderWindow *window){
-		float difx = x1-x;
-		float dify = y1-y;
-		float diff = dify/difx;
-		int cx = x;
-		int cy = y;
-		if(x1>x && y1>y){
-			if(cx < x1)
-			for(cx = x; cx<=x1; cx+=diff, cy+=diff){
-				sf::Vertex vertices(sf::Vector2f(cx,cy), sf::Color::Black);
-				window->draw(&vertices,1,sf::Points);
-			}
-		}
-	}*/
+	/** makeline
+	 * służy do sworzenia krzywej
+	 * @param line wektor punktów typu Vertex
+	*/
 	void makeline(std::vector<sf::Vertex> line){
 		linesvector.clear();
 		lines.resize(line.size());
@@ -62,10 +47,9 @@ public:
 
 		if(x<x1 && y<y1){
 
-			std::cout<<std::endl<<(x1-x)/(y1-y)<<std::endl;
+			//std::cout<<std::endl<<(x1-x)/(y1-y)<<std::endl;
 			if( (y1-y)/(x1-x) < 1 ){
 
-				std::cout<<"jestem mniejszy od 45 stopni."<<std::endl;
 				float difx = x1-x;
 				float dify = y1-y;
 				float diffy = dify/difx;
@@ -91,7 +75,6 @@ public:
 			}
 			else
 			{
-				std::cout<<"jestem wiekszy od 45 stopni."<<std::endl;
 				float difx = x1-x;
 				float dify = y1-y;
 				float diffy = dify/difx;
@@ -118,7 +101,11 @@ public:
 		}
 	}
 	}
-
+	/** makeline
+	 * służy do sworzenia linii prostej
+	 * @param pos1 pozycja pierwszego punktu
+	 * @param pos2 pozycja ostatniego punktu
+	*/
 	void makelineln(sf::Vector2f pos1, sf::Vector2f pos2){
 		linesvector.clear();
 		int x = pos1.x; //pos1.x;
@@ -137,10 +124,9 @@ public:
 
 		if(x<x1 && y<y1){
 
-			std::cout<<std::endl<<(x1-x)/(y1-y)<<std::endl;
+			//std::cout<<std::endl<<(x1-x)/(y1-y)<<std::endl;
 			if( (y1-y)/(x1-x) < 1 ){
 
-				std::cout<<"jestem mniejszy od 45 stopni."<<std::endl;
 				float difx = x1-x;
 				float dify = y1-y;
 				float diffy = dify/difx;
@@ -166,7 +152,6 @@ public:
 			}
 			else
 			{
-				std::cout<<"jestem wiekszy od 45 stopni."<<std::endl;
 				float difx = x1-x;
 				float dify = y1-y;
 				float diffy = dify/difx;
@@ -192,6 +177,10 @@ public:
 			}
 		}
 	}
+	/** drawline
+	 * rysuje stworzone linie
+	 * @param window wskaźnik na okno gry
+	*/
 	void drawline(sf::RenderWindow *window){
 		//std::cout<<"rysuje sie\n";
 		//window->draw(vertices);
@@ -200,7 +189,14 @@ public:
 		window->draw(fillshape);
 		//window->draw(&linesvectorfill[0],linesvectorfill.size(),sf::LineStrip);
 	}
-	
+	/** drawRectangle
+	 * Rysuje prostokat
+	 * @param window wskaźnik na okno gry
+	 * @param posx pozycja x prostokata
+	 * @param posy pozycja y prostokata
+	 * @param sizex rozmiar x prostokata
+	 * @param sizey rozmiar y prostokata
+	*/
 	void drawRectangle(sf::RenderWindow *window, int posx, int posy, int sizex, int sizey){
 		sf::RectangleShape rectangle(sf::Vector2f(sizex,sizey));
 		rectangle.setPosition(sf::Vector2f(posx,posy));
@@ -208,6 +204,11 @@ public:
 		window->draw(rectangle);
 	}
 
+	/** makeCircle
+	 * Tworzy kolo
+	 * @param center pozycja środka kola
+	 * @param radius promień koła
+	*/
 	void makeCircle(sf::Vector2f center, float radius){
 		circlevector.resize(500);
 		for(float i = 0 ;i<3.14/2;i += 0.01){
@@ -216,14 +217,21 @@ public:
 			circlevector.push_back(sf::Vertex(sf::Vector2f((int)(center.x + (radius * std::cos(i))), ((int)center.y - (radius * std::sin(i)))),sf::Color::Black));
 			circlevector.push_back(sf::Vertex(sf::Vector2f((int)(center.x - (radius * std::cos(i))), ((int)center.y - (radius * std::sin(i)))),sf::Color::Black));
 		}
-
-
 	}
+	/** drawCircle
+	 * rysuje koło
+	 * @param window wskaźnik na okno gry
+	 */
 	void drawCircle(sf::RenderWindow *window){
-
 		window->draw(&circlevector[0],circlevector.size(),sf::Points);
-
 	}
+
+	/** makeElipsse
+	 * Tworzy elipsę
+	 * @param center pozycja środka elipsy
+	 * @param radiusx promień x
+	 * @param radiusy promień y
+	*/
 	void makeElipsse(sf::Vector2f center, float radiusx, float radiusy){
 		circlevector.resize(500);
 		for(float i = 0 ;i<3.14/2;i += 0.01){
@@ -232,37 +240,37 @@ public:
 			elipssevector.push_back(sf::Vertex(sf::Vector2f((int)(center.x + (radiusx * std::cos(i))), ((int)center.y - (radiusy * std::sin(i)))),sf::Color::Black));
 			elipssevector.push_back(sf::Vertex(sf::Vector2f((int)(center.x - (radiusx * std::cos(i))), ((int)center.y - (radiusy * std::sin(i)))),sf::Color::Black));
 		}
-
-
 	}
+	
+	/** drawElipsse
+	 * Rysuje elipsę
+	 * @param window wskaźnik na okno gry
+	*/
 	void drawElipsse(sf::RenderWindow *window){
 
 		window->draw(&elipssevector[0],elipssevector.size(),sf::Points);
 
 	}
 
-	void drawTriangle(sf::RenderWindow *window, int posx, int posy, int size){
-		
-
-
-		sf::CircleShape circle(size,3);
-		circle.setPosition(sf::Vector2f(posx,posy));
-		circle.setFillColor(sf::Color::Red);
-		window->draw(circle);
-	}
-
-	void drawshapes(sf::RenderWindow *window){
-		window->draw(triangle);
-	}
-
+	/** makepoint
+	 * Tworzy punkt
+	 * @param p wektor pozycji punktu
+	*/
 	void makepoint(sf::Vector2f p){
 		point.position = p;
 		point.color = sf::Color(sf::Color::Black);
 	}
+	/** drawpoint
+	 * rysuje punkt
+	 * @param window wskaźnik na okno gry
+	*/
 	void drawpoint(sf::RenderWindow *window){
-		//window->draw(point, 1, sf::Points);
+		window->draw(&point, 1, sf::Points);
 	}
-
+	/** makesfmlline
+	 * tworzy krzywą za pomocą funkcji wbudowanej w sfml
+	 * @param line wektor objektow Vertex
+	*/
 	void makesfmlline(std::vector<sf::Vertex> line){
 		linesvector.clear();
 		lines.resize(line.size());
@@ -272,6 +280,11 @@ public:
 			linesvector.push_back(lines[i]);
 		}
 	}
+	/** makesfmllineln
+	 * tworzy line za pomocą funkcji wbudowanej w sfml
+	 * @param pos1 pozycja startowa/poprzednia
+	 * @param pos2 pozycja kolejna/ostatnia
+	*/
 	void makesfmllineln(sf::Vector2f pos1, sf::Vector2f pos2){
 		linesvector.clear();
 		sf::Vertex vert;
@@ -285,16 +298,19 @@ public:
 		linesvector.push_back(vert);
 	}
 
+	/** clearLine
+	 * usuwa narysowane linie
+	*/
 	void clearLine(){
 		lines.clear();
 		linesvector.clear();
 		fillshape.setPointCount(0);
 	}
-
-	void drawBitmap(sf::RenderWindow *window){
-		bitmap.animateSprite(window);
-	}
 	
+	/** fillArea
+	 * służy do stworzenia krzywej wypełnionej
+	 * @param myColor kolor wypełnienia
+	*/
 	void fillArea(sf::Color myColor){
 		linesvectorfill = linesvector;
 		fillshape.setPointCount(linesvectorfill.size());
